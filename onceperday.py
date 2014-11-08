@@ -74,7 +74,7 @@ class OncePerDay:
 			return
 		timestamp = datetime.datetime.combine(today, magic_point)
 		try:
-			result = self.func(timestamp)
+			result = self.func(timestamp, self.slug)
 		except Exception as e:
 			# if the function raises an exception, we don't caunt it as having been done
 			print('Exception: {}'.format(e))
