@@ -1,0 +1,24 @@
+* OncePerDay
+
+  OncePerDay is a Python 3 module that will assist in calling a function
+  exactly one time every day, at a different random time each day.  It
+  will take care of calculating the random point for the day in a
+  reproducible manner, checking the cache to see whether the function
+  has already been called today, calling the function if it hasn't yet
+  been called, and caching the result to ensure that subsequent calls to
+  OncePerDay will not run the function again (until we get to the magic
+  point the next day).
+
+  Basic usage is simply to instantiate the OncePerDay class with a
+  function and a slug (the slug is used to identify the cache file).
+  The function will be called if the magic point for today has already
+  been passed and the cache file does not indicate that it has already
+  been called.  The fact that the function has been called for today
+  will be written to the cache file, along with the output from the
+  function.  You can set a cron job to run this regularly during that
+  (maybe every 15 minutes, or maybe every minute if you really want to
+  run the function as soon as possible after the magic point is
+  reached).
+
+* License
+  MIT
