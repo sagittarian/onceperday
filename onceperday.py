@@ -72,7 +72,13 @@ class OncePerDay:
 		today = datetime.date.today()
 		if self.checkcache(today, magic_point):
 			return
-		result = str(self.func()) or ''
+		try:
+			result = self.func()
+		except Exception as e:
+			# if the function raises an exception, we don't caunt it as having been done
+			print('Exception: {}'.format(e))
+			return
+		result = str(result) or ''
 		if not result or result[-1] != '\n':
 			result += '\n'
 		with open(self.cachefile, 'a') as f:
